@@ -119,7 +119,7 @@ def _get_fobj_feval(
 
 
 def set_params(params: dict[str, Any], train_set: Dataset) -> dict[str, Any]:
-    """Set params and eval finction, objective in params."""
+    """Set params and eval function, objective in params."""
     _params = deepcopy(params)
     if _OBJECTIVE_STR not in params:
         raise ValueError(f"{_OBJECTIVE_STR} must be included in params.")

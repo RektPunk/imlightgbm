@@ -25,7 +25,7 @@ def _weighted_grad_hess(
 def _focal_grad_hess(
     y_true: np.ndarray, pred_prob: np.ndarray, gamma: float
 ) -> tuple[np.ndarray, np.ndarray]:
-    """Reurtn focal grad hess."""
+    """Return focal grad hess."""
     prob_product = pred_prob * (1 - pred_prob)
     true_diff_pred = y_true + ((-1) ** y_true) * pred_prob
     focal_grad_term = pred_prob + y_true - 1
@@ -89,7 +89,7 @@ def sklearn_multiclass_focal_objective(
     gamma: float,
     num_class: int,
 ) -> tuple[np.ndarray, np.ndarray]:
-    """Return grad, hess for multclass focal objective for sklearn API.."""
+    """Return grad, hess for multclass focal objective for sklearn API."""
     pred_prob = softmax(y_pred, axis=1)
     y_true_onehot = np.eye(num_class)[y_true.astype(int)]
     return _focal_grad_hess(y_true=y_true_onehot, pred_prob=pred_prob, gamma=gamma)
